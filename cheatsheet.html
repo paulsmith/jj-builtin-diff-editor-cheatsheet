@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      scm-record Split/Interactive Squash Cheat Sheet (for Jujutsu / jj)
+    </title>
+    <style>
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        line-height: 1.4;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+
+      header {
+        margin-bottom: 2rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        margin: 0.5rem 0;
+      }
+
+      header p {
+        color: #666;
+        margin: 0;
+        font-size: 0.9rem;
+      }
+
+      a {
+        color: #0366d6;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 0.5em;
+      }
+
+      section {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 0.625rem;
+      }
+
+      section h2 {
+        font-size: 1rem;
+        margin: 0 0 0.3rem 0;
+        padding-bottom: 0.3rem;
+        border-bottom: 1px solid #eee;
+      }
+
+      dl {
+        margin: 0;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+      }
+
+      dl div {
+        grid-column: span 2;
+        display: grid;
+        grid-template-columns: subgrid;
+        padding: 0.2em;
+        gap: 3px;
+      }
+
+      dl div:nth-of-type(even) {
+        background: #f8f9fa;
+      }
+
+      dt {
+        grid-column-start: 1;
+        color: #444;
+        grid-row: 2 span;
+      }
+
+      dd {
+        grid-column-start: 2;
+        font-family: monospace;
+      }
+
+      dd code {
+        background: #e9ecef;
+        padding: 0.1rem 0.3rem;
+        border-radius: 3px;
+        white-space: nowrap;
+      }
+
+      @media print {
+        body {
+          padding: 0;
+        }
+        section {
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>
+        scm-record Split/Interactive Squash Cheat Sheet (for <code>jj</code>)
+      </h1>
+      <p>
+        A reference for
+        <a href="https://github.com/arxanas/scm-record">scm-record</a>, the TUI
+        tool used by
+        <a href="https://jj-vcs.github.io/jj/latest/"
+          >Jujutsu / <code>jj</code></a
+        >'s interactive commit editing commands,
+        <a href="https://jj-vcs.github.io/jj/latest/cli-reference/#jj-split"
+          ><code>jj split</code></a
+        >
+        and
+        <a href="https://jj-vcs.github.io/jj/latest/cli-reference/#jj-squash"
+          ><code>jj squash -i</code></a
+        >
+      </p>
+    </header>
+
+    <main>
+      <section>
+        <h2>Navigation</h2>
+        <dl>
+          <div>
+            <dt>Previous item</dt>
+            <dd><code>↑</code></dd>
+            <dd><code>k</code></dd>
+          </div>
+
+          <div>
+            <dt>Next item</dt>
+            <dd><code>↓</code></dd>
+            <dd><code>j</code></dd>
+          </div>
+
+          <div>
+            <dt>Previous same type</dt>
+            <dd><code>Page Up</code></dd>
+          </div>
+
+          <div>
+            <dt>Next same type</dt>
+            <dd><code>Page Down</code></dd>
+          </div>
+
+          <div>
+            <dt>Outer item with fold</dt>
+            <dd><code>←</code></dd>
+            <dd><code>h</code></dd>
+          </div>
+
+          <div>
+            <dt>Outer item only</dt>
+            <dd><code>Shift+←</code></dd>
+            <dd><code>Shift+h</code></dd>
+          </div>
+
+          <div>
+            <dt>Inner item and unfold</dt>
+            <dd><code>→</code></dd>
+            <dd><code>l</code></dd>
+          </div>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Mouse Controls</h2>
+        <dl>
+          <div>
+            <dt>Select item</dt>
+            <dd>Click on item</dd>
+          </div>
+
+          <div>
+            <dt>Toggle selection</dt>
+            <dd>Click checkbox</dd>
+          </div>
+
+          <div>
+            <dt>Expand/collapse section</dt>
+            <dd>Click [+]/[-]</dd>
+          </div>
+
+          <div>
+            <dt>Access commands</dt>
+            <dd>Click menu items</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Scrolling</h2>
+        <dl>
+          <div>
+            <dt>Scroll up one line</dt>
+            <dd><code>Ctrl+↑</code></dd>
+            <dd><code>Ctrl+y</code></dd>
+          </div>
+
+          <div>
+            <dt>Scroll down one line</dt>
+            <dd><code>Ctrl+↓</code></dd>
+            <dd><code>Ctrl+e</code></dd>
+          </div>
+
+          <div>
+            <dt>Page up</dt>
+            <dd><code>Ctrl+Page Up</code></dd>
+            <dd><code>Ctrl+b</code></dd>
+          </div>
+
+          <div>
+            <dt>Page down</dt>
+            <dd><code>Ctrl+Page Down</code></dd>
+            <dd><code>Ctrl+f</code></dd>
+          </div>
+
+          <div>
+            <dt>Previous page</dt>
+            <dd><code>Ctrl+u</code></dd>
+          </div>
+
+          <div>
+            <dt>Next page</dt>
+            <dd><code>Ctrl+d</code></dd>
+          </div>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Selection</h2>
+        <dl>
+          <div>
+            <dt>Toggle current</dt>
+            <dd><code>Space</code></dd>
+          </div>
+
+          <div>
+            <dt>Toggle and advance</dt>
+            <dd><code>Enter</code></dd>
+          </div>
+
+          <div>
+            <dt>Invert all</dt>
+            <dd><code>a</code></dd>
+          </div>
+
+          <div>
+            <dt>Invert all uniformly</dt>
+            <dd><code>A</code></dd>
+          </div>
+        </dl>
+      </section>
+
+      <section>
+        <h2>View Controls</h2>
+        <dl>
+          <div>
+            <dt>Expand/collapse section</dt>
+            <dd><code>f</code></dd>
+          </div>
+
+          <div>
+            <dt>Expand/collapse all</dt>
+            <dd><code>F</code></dd>
+          </div>
+
+          <div>
+            <dt>Edit commit message</dt>
+            <dd><code>e</code></dd>
+          </div>
+        </dl>
+      </section>
+
+      <section>
+        <h2>General</h2>
+        <dl>
+          <div>
+            <dt>Show help</dt>
+            <dd><code>?</code></dd>
+          </div>
+
+          <div>
+            <dt>Quit/cancel</dt>
+            <dd><code>q</code></dd>
+          </div>
+
+          <div>
+            <dt>Confirm changes</dt>
+            <dd><code>c</code></dd>
+          </div>
+
+          <div>
+            <dt>Force quit</dt>
+            <dd><code>Ctrl+c</code></dd>
+          </div>
+
+          <div>
+            <dt>Close dialog</dt>
+            <dd><code>Esc</code></dd>
+          </div>
+        </dl>
+      </section>
+    </main>
+  </body>
+</html>
