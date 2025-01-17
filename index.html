@@ -2,10 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>
-      scm-record Split/Interactive Squash Cheat Sheet (for Jujutsu / jj)
-    </title>
+    <title>Jujutsu / jj's built-in diff editor cheat sheet</title>
     <style>
+      :root {
+        --dark-blue: #1a1b25;
+        --light-blue: #c2caf1;
+        --medium-blue: #82a1f1;
+        --light-gray: #e9ecef;
+
+        --accent: light-dark(CornflowerBlue, RoyalBlue);
+        --bg: light-dark(white, var(--dark-blue));
+        --fg: light-dark(var(--dark-blue), var(--light-blue));
+      }
+
+      html {
+        color-scheme: light dark;
+        accent-color: var(--accent);
+        background-color: var(--bg);
+        color: var(--fg);
+      }
+
+      *:focus-visible {
+        outline: 2px solid var(--accent);
+      }
+
+      :any-link {
+        color: oklch(from var(--medium-blue) l c h);
+      }
+
       body {
         font-family:
           system-ui,
@@ -27,30 +51,21 @@
       }
 
       header p {
-        color: #666;
+        color: hsla(from var(--fg) h s l / 0.5);
         margin: 0;
         font-size: 0.9rem;
       }
 
       footer {
-          margin-top: 2rem;
-          border-top: 1px solid #eee;
-          padding-top: 2rem;
+        margin-top: 2rem;
+        border-top: 1px solid oklch(from var(--fg) l c h / 0.1);
+        padding-top: 2rem;
       }
 
       footer p {
-        color: #666;
+        color: hsla(from var(--fg) h s l / 0.5);
         margin: 0;
         font-size: 0.8rem;
-      }
-
-      a {
-        color: #0366d6;
-        text-decoration: none;
-      }
-
-      a:hover {
-        text-decoration: underline;
       }
 
       main {
@@ -60,7 +75,7 @@
       }
 
       section {
-        border: 1px solid #ccc;
+        border: 1px solid oklch(from var(--fg) l c h / 0.2);
         border-radius: 4px;
         padding: 0.625rem;
       }
@@ -69,7 +84,7 @@
         font-size: 1rem;
         margin: 0 0 0.3rem 0;
         padding-bottom: 0.3rem;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid oklch(from var(--fg) l c h / 0.1);
       }
 
       dl {
@@ -87,12 +102,15 @@
       }
 
       dl div:nth-of-type(even) {
-        background: #f8f9fa;
+        background-color: light-dark(
+          oklch(from var(--bg) calc(l * 0.975) c h),
+          oklch(from var(--bg) calc(l * 1.1) c h)
+        );
       }
 
       dt {
         grid-column-start: 1;
-        color: #444;
+        color: var(--fg);
         grid-row: 2 span;
       }
 
@@ -102,7 +120,10 @@
       }
 
       dd code {
-        background: #e9ecef;
+        background-color: light-dark(
+          oklch(from var(--light-gray) calc(l * 0.9625) c h),
+          oklch(from var(--dark-blue) calc(l * 1.5) c h)
+        );
         padding: 0.1rem 0.3rem;
         border-radius: 3px;
         white-space: nowrap;
@@ -120,15 +141,13 @@
   </head>
   <body>
     <header>
-      <h1>
-        scm-record Split/Interactive Squash Cheat Sheet (for <code>jj</code>)
-      </h1>
+      <h1>Jujutsu / <code>jj</code>'s built-in diff editor cheat sheet</h1>
       <p>
-        A quick reference for
-        <a href="https://github.com/arxanas/scm-record">scm-record</a>, the TUI
-        tool used by
-        <a href="https://jj-vcs.github.io/jj/latest/"
-          >Jujutsu / <code>jj</code></a
+        A quick reference for the built-in TUI diff editor (<a
+          href="https://github.com/arxanas/scm-record"
+          >scm-record</a
+        >) used by
+        <a href="https://jj-vcs.github.io/jj/latest/"> <code>jj</code></a
         >'s interactive commit editing commands,
         <a href="https://jj-vcs.github.io/jj/latest/cli-reference/#jj-split"
           ><code>jj split</code></a
@@ -327,11 +346,13 @@
     </main>
 
     <footer>
-        <p>
-            By <a href="https://pauladamsmith.com/">Paul Smith</a>.
-            Last updated on Fri Jan 17 13:13:29 CST 2025.
-            <a href="https://github.com/paulsmith/jj-builtin-diff-editor-cheatsheet">Issues, etc.</a>
-        </p>
+      <p>
+        By <a href="https://pauladamsmith.com/">Paul Smith</a>. Last updated on
+        Fri Jan 17 22:53:33 CST 2025.
+        <a href="https://github.com/paulsmith/jj-builtin-diff-editor-cheatsheet"
+          >Issues, etc.</a
+        >
+      </p>
     </footer>
   </body>
 </html>
