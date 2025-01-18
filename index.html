@@ -104,8 +104,8 @@
 
       dl div:nth-of-type(even) {
         background-color: light-dark(
-          oklch(from var(--bg) calc(l * 0.975) c h),
-          oklch(from var(--bg) calc(l * 1.1) c h)
+          hsl(from var(--bg) h s calc(l * 0.975)),
+          hsl(from var(--bg) h s calc(l * 1.1))
         );
       }
 
@@ -122,8 +122,8 @@
 
       dd code {
         background-color: light-dark(
-          oklch(from var(--light-gray) calc(l * 0.9625) c h),
-          oklch(from var(--dark-blue) calc(l * 1.5) c h)
+          hsl(from var(--light-gray) h s calc(l * 0.9625)),
+          hsl(from var(--dark-blue) h s calc(l * 1.5))
         );
         padding: 0.1rem 0.3rem;
         border-radius: 3px;
