@@ -1,0 +1,23 @@
+/*
+ * thanks, NeverCease
+ * https://github.com/NeverCease/uchu/blob/primary/definitions/style/color_expanded.css
+ */
+
+:root {
+  --uchu-yin-8-raw: 35.02% 0.005 236.66;
+  --uchu-yin-8: oklch(var(--uchu-yin-8-raw));
+  --uchu-yin-9-raw: 25.11% 0.006 258.36;
+  --uchu-yin-9: oklch(var(--uchu-yin-9-raw));
+  --uchu-gray-1-raw: 95.57% 0.003 286.35;
+  --uchu-gray-1: oklch(var(--uchu-gray-1-raw));
+  --uchu-gray-3-raw: 88.28% 0.003 286.34;
+  --uchu-gray-3: oklch(var(--uchu-gray-3-raw));
+  --uchu-blue-3-raw: 70.94% 0.136 258.06;
+  --uchu-blue-3: oklch(var(--uchu-blue-3-raw));
+  --uchu-blue-4-raw: 62.39% 0.181 258.33;
+  --uchu-blue-4: oklch(var(--uchu-blue-4-raw));
+  --uchu-blue-5-raw: 54.87% 0.222 260.33;
+  --uchu-blue-5: oklch(var(--uchu-blue-5-raw));
+  --uchu-blue-6-raw: 51.15% 0.204 260.17;
+  --uchu-blue-6: oklch(var(--uchu-blue-6-raw));
+}

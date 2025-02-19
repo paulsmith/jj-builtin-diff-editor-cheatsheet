@@ -4,23 +4,21 @@
     <meta charset="utf-8">
     <title>Jujutsu / jj's built-in diff/merge tool cheatsheet</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="color_expanded.css">
     <style>
       :root {
-        --dark-blue: #1a1b25;
-        --light-blue: #c2caf1;
-        --medium-blue: #82a1f1;
-        --light-gray: #e9ecef;
+        color-scheme: light dark;
 
-        --accent: light-dark(CornflowerBlue, RoyalBlue);
-        --bg: light-dark(white, var(--dark-blue));
-        --fg: light-dark(var(--dark-blue), var(--light-blue));
+        --text: light-dark(var(--uchu-yin-9), var(--uchu-gray-1));
+        --bg: light-dark(Canvas, var(--uchu-yin-9));
+        --accent: light-dark(var(--uchu-blue-4), var(--uchu-blue-6));
+        --link-color: light-dark(var(--uchu-blue-5), var(--uchu-blue-3));
       }
 
       html {
-        color-scheme: light dark;
         accent-color: var(--accent);
         background-color: var(--bg);
-        color: var(--fg);
+        color: var(--text);
       }
 
       *:focus-visible {
@@ -28,7 +26,7 @@
       }
 
       :any-link {
-        color: oklch(from var(--medium-blue) l c h);
+        color: var(--link-color);
       }
 
       body {
@@ -51,21 +49,23 @@
         margin: 0.5rem 0;
       }
 
-      header p {
-        color: hsla(from var(--fg) h s l / 0.5);
+      header p,
+      footer p {
+        color: hsla(from var(--text) h s l / 0.5);
         margin: 0;
+      }
+
+      header p {
         font-size: 0.9rem;
       }
 
       footer {
         margin-top: 2rem;
-        border-top: 1px solid oklch(from var(--fg) l c h / 0.1);
+        border-top: 1px solid hsla(from var(--text) h s l / 0.1);
         padding-top: 2rem;
       }
 
       footer p {
-        color: hsla(from var(--fg) h s l / 0.5);
-        margin: 0;
         font-size: 0.8rem;
       }
 
@@ -76,7 +76,7 @@
       }
 
       section {
-        border: 1px solid oklch(from var(--fg) l c h / 0.2);
+        border: 1px solid hsla(from var(--text) h s l / 0.2);
         border-radius: 4px;
         padding: 0.625rem;
       }
@@ -85,7 +85,7 @@
         font-size: 1rem;
         margin: 0 0 0.3rem 0;
         padding-bottom: 0.3rem;
-        border-bottom: 1px solid oklch(from var(--fg) l c h / 0.1);
+        border-bottom: 1px solid hsla(from var(--text) h s l / 0.1);
       }
 
       dl {
@@ -104,14 +104,14 @@
 
       dl div:nth-of-type(even) {
         background-color: light-dark(
-          hsl(from var(--bg) h s calc(l * 0.975)),
-          hsl(from var(--bg) h s calc(l * 1.1))
+          hsl(from var(--bg) h s calc(l * 0.965)),
+          hsl(from var(--bg) h s calc(l * 1.25))
         );
       }
 
       dt {
         grid-column-start: 1;
-        color: var(--fg);
+        color: var(--text);
         grid-row: 2 span;
       }
 
@@ -121,10 +121,7 @@
       }
 
       dd code {
-        background-color: light-dark(
-          hsl(from var(--light-gray) h s calc(l * 0.9625)),
-          hsl(from var(--dark-blue) h s calc(l * 1.5))
-        );
+        background-color: light-dark(var(--uchu-gray-3), var(--uchu-yin-8));
         padding: 0.1rem 0.3rem;
         border-radius: 3px;
         white-space: nowrap;
